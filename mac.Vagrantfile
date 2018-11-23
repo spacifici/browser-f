@@ -13,8 +13,6 @@ Vagrant.configure("2") do |config|
     v.name = "browser-f-mac"
     v.memory = ENV["NODE_MEMORY"]
     v.cpus = ENV["NODE_CPU_COUNT"]
-    v.vmx["remotedisplay.vnc.enabled"] = "TRUE"
-    v.vmx["RemoteDisplay.vnc.port"] = ENV["NODE_VNC_PORT"]
   end
 
   config.vm.provision "shell", privileged: true, run: "always", inline: <<-SHELL
