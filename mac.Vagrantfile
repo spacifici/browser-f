@@ -5,6 +5,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "browser-f-ios10.12.6-305"
   config.vm.define "browser-f-mac"
+  config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.network "public_network", :bridge => "en0: Ethernet 1", auto_config: false
   config.vm.network "forwarded_port", guest: 5900, host: 7900
 
