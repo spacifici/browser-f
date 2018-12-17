@@ -1124,6 +1124,8 @@ you can use these alternative items. Otherwise, their values should be empty.  -
 <!ENTITY updateRestart.cancelButton.accesskey "N">
 <!ENTITY updateRestart.panelUI.label2 "Restart to update &brandShorterName;">
 
+<!ENTITY addonSupport.panelUI.label "Cliqz now supports Firefox add-ons.">
+
 <!ENTITY newTabControlled.header.message "Your New Tab has changed.">
 <!ENTITY newTabControlled.keepButton.label "Keep Changes">
 <!ENTITY newTabControlled.keepButton.accesskey "K">

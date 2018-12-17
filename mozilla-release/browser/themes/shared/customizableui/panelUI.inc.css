@@ -88,6 +88,11 @@
   list-style-image: url(chrome://branding/content/icon16.png);
 }
 
+.panel-banner-item[notificationid="addon-support"] {
+  background: #c5f0fe;
+  max-width: 290px;
+}
+
 #PanelUI-menu-button[badge-status="addon-alert"] > .toolbarbutton-badge-stack > .toolbarbutton-badge,
 #PanelUI-menu-button[badge-status="fxa-needs-authentication"] > .toolbarbutton-badge-stack > .toolbarbutton-badge {
   height: 13px;

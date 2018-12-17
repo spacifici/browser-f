@@ -201,6 +201,10 @@
                        oncommand="PanelUI._onBannerItemSelected(event)"
                        wrap="true"
                        hidden="true"/>
+        <description class="subviewbutton panel-banner-item"
+                     notificationid="addon-support"
+                     crop="end"
+                     value="&addonSupport.panelUI.label;"/>
         <toolbarbutton id="appMenu-cliqz-connect-button"
                        label="&connect.panelUI.label;"
                        class="subviewbutton subviewbutton-iconic"
