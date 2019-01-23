@@ -346,8 +346,6 @@ var gPrivacyPane = {
     this.updatePrivacyMicroControls();
     this.initAutoStartPrivateBrowsingReverter();
     this._initAutocomplete();
-
-<<<<<<< HEAD
     this._initHttpsEverywhere();
     this._initConsentric();
 #if CQZ_AUTO_PRIVATE_TAB
@@ -355,26 +353,9 @@ var gPrivacyPane = {
         getService(Ci.nsISupports).wrappedJSObject;
     document.getElementById("forgetMode").hidden = !autoForgetTabs.hasDatabase;
 #endif
-
-    /* Initialize Content Blocking / Tracking Protection */
 #if 0
-    if (contentBlockingUiEnabled) {
-      this.initContentBlocking();
-    } else {
-      this._initTrackingProtection();
-    }
-||||||| merged common ancestors
-    /* Initialize Content Blocking / Tracking Protection */
-
-    if (contentBlockingUiEnabled) {
-      this.initContentBlocking();
-    } else {
-      this._initTrackingProtection();
-    }
-=======
     /* Initialize Content Blocking */
     this.initContentBlocking();
->>>>>>> upstream/upstream-releases
 
     this.trackingProtectionReadPrefs();
     this.networkCookieBehaviorReadPrefs();
@@ -527,12 +508,8 @@ var gPrivacyPane = {
         gPrivacyPane.updateSubmitHealthReport);
 #if 0
       this.initOptOutStudyCheckbox();
-<<<<<<< HEAD
-#endif
-||||||| merged common ancestors
-=======
       this.initAddonRecommendationsCheckbox();
->>>>>>> upstream/upstream-releases
+#endif
     }
     this._initA11yState();
     let signonBundle = document.getElementById("signonBundle");

@@ -879,26 +879,14 @@
             "win64-aarch64-msvc-devedition",
             "win64-devedition"
         ],
-<<<<<<< HEAD
-        "revision": "6e19af081133"
-||||||| merged common ancestors
-        "revision": "b08599d9deb8"
-=======
         "revision": "5d04793bb613"
->>>>>>> upstream/upstream-releases
     },
     "ja-JP-mac": {
         "platforms": [
             "macosx64",
             "macosx64-devedition"
         ],
-<<<<<<< HEAD
-        "revision": "15a157860e5e"
-||||||| merged common ancestors
-        "revision": "6ab41927967b"
-=======
         "revision": "34dafc593b69"
->>>>>>> upstream/upstream-releases
     },
     "ka": {
         "platforms": [

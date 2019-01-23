@@ -784,8 +784,11 @@ Section "-InstallEndCleanup"
       ${EndUnless}
     ${EndIf}
   ${EndIf}
-<<<<<<< HEAD
 
+  StrCpy $InstallResult "success"
+
+  ; When we're using the GUI, .onGUIEnd sends the ping, but of course that isn't
+  ; invoked when we're running silently.
   ; Cliqz: autolaunch in silent mode if /run switch exist
   ${If} ${Silent}
     ${GetParameters} $0
@@ -794,17 +797,6 @@ Section "-InstallEndCleanup"
       Call LaunchApp
     ${EndUnless}
   ${EndIf}
-||||||| merged common ancestors
-=======
-
-  StrCpy $InstallResult "success"
-
-  ; When we're using the GUI, .onGUIEnd sends the ping, but of course that isn't
-  ; invoked when we're running silently.
-  ${If} ${Silent}
-    Call SendPing
-  ${EndIf}
->>>>>>> upstream/upstream-releases
 SectionEnd
 
 ################################################################################

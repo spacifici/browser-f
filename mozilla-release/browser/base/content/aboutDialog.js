@@ -71,18 +71,6 @@ async function init(aEvent) {
     document.getElementById("experimental").hidden = false;
     document.getElementById("communityDesc").hidden = true;
   }
-<<<<<<< HEAD
-#endif
-||||||| merged common ancestors
-
-  // Append "(32-bit)" or "(64-bit)" build architecture to the version number:
-  let bundle = Services.strings.createBundle("chrome://browser/locale/browser.properties");
-  let archResource = Services.appinfo.is64Bit
-                     ? "aboutDialog.architecture.sixtyFourBit"
-                     : "aboutDialog.architecture.thirtyTwoBit";
-  let arch = bundle.GetStringFromName(archResource);
-  versionField.textContent += ` (${arch})`;
-=======
 
   // Append "(32-bit)" or "(64-bit)" build architecture to the version number:
   let archResource = Services.appinfo.is64Bit
@@ -90,7 +78,7 @@ async function init(aEvent) {
                      : "aboutDialog-architecture-thirtyTwoBit";
   let [arch] = await document.l10n.formatValues([{id: archResource}]);
   versionField.textContent += ` (${arch})`;
->>>>>>> upstream/upstream-releases
+#endif
 
   // Show a release notes link if we have a URL.
   let relNotesLink = document.getElementById("releasenotes");

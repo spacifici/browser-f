@@ -105,15 +105,9 @@ class LoadContext final : public nsILoadContext, public nsIInterfaceRequestor {
   explicit LoadContext(nsIPrincipal* aPrincipal,
                        nsILoadContext* aOptionalBase = nullptr);
 
-<<<<<<< HEAD
   void SetPrivateness(bool);
 
-private:
-||||||| merged common ancestors
-private:
-=======
  private:
->>>>>>> upstream/upstream-releases
   ~LoadContext() {}
 
   nsTObserverArray<nsWeakPtr> mPrivacyObservers;

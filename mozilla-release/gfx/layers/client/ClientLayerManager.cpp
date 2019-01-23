@@ -45,42 +45,6 @@ namespace layers {
 using namespace mozilla::gfx;
 
 ClientLayerManager::ClientLayerManager(nsIWidget* aWidget)
-<<<<<<< HEAD
-  : mPhase(PHASE_NONE)
-  , mWidget(aWidget)
-  , mPaintedLayerCallback(nullptr)
-  , mPaintedLayerCallbackData(nullptr)
-  , mLatestTransactionId{0}
-  , mLastPaintTime(TimeDuration::Forever())
-  , mTargetRotation(ROTATION_0)
-  , mRepeatTransaction(false)
-  , mIsRepeatTransaction(false)
-  , mTransactionIncomplete(false)
-  , mCompositorMightResample(false)
-  , mNeedsComposite(false)
-  , mQueuedAsyncPaints(false)
-  , mNotifyingWidgetListener(false)
-  , mPaintSequenceNumber(0)
-  , mForwarder(new ShadowLayerForwarder(this))
-{
-||||||| merged common ancestors
-  : mPhase(PHASE_NONE)
-  , mWidget(aWidget)
-  , mPaintedLayerCallback(nullptr)
-  , mPaintedLayerCallbackData(nullptr)
-  , mLatestTransactionId{0}
-  , mLastPaintTime(TimeDuration::Forever())
-  , mTargetRotation(ROTATION_0)
-  , mRepeatTransaction(false)
-  , mIsRepeatTransaction(false)
-  , mTransactionIncomplete(false)
-  , mCompositorMightResample(false)
-  , mNeedsComposite(false)
-  , mQueuedAsyncPaints(false)
-  , mPaintSequenceNumber(0)
-  , mForwarder(new ShadowLayerForwarder(this))
-{
-=======
     : mPhase(PHASE_NONE),
       mWidget(aWidget),
       mPaintedLayerCallback(nullptr),
@@ -97,7 +61,6 @@ ClientLayerManager::ClientLayerManager(nsIWidget* aWidget)
       mNotifyingWidgetListener(false),
       mPaintSequenceNumber(0),
       mForwarder(new ShadowLayerForwarder(this)) {
->>>>>>> upstream/upstream-releases
   MOZ_COUNT_CTOR(ClientLayerManager);
   mMemoryPressureObserver = MemoryPressureObserver::Create(this);
 }
@@ -117,24 +80,11 @@ ClientLayerManager::~ClientLayerManager() {
   MOZ_COUNT_DTOR(ClientLayerManager);
 }
 
-<<<<<<< HEAD
-void
-ClientLayerManager::Destroy()
-{
-  MOZ_DIAGNOSTIC_ASSERT(!mNotifyingWidgetListener,
-    "Try to avoid destroying widgets and layer managers during DidCompositeWindow, if you can");
-
-||||||| merged common ancestors
-void
-ClientLayerManager::Destroy()
-{
-=======
 void ClientLayerManager::Destroy() {
   MOZ_DIAGNOSTIC_ASSERT(!mNotifyingWidgetListener,
                         "Try to avoid destroying widgets and layer managers "
                         "during DidCompositeWindow, if you can");
 
->>>>>>> upstream/upstream-releases
   // It's important to call ClearCachedResource before Destroy because the
   // former will early-return if the later has already run.
   ClearCachedResources();
@@ -516,33 +466,11 @@ void ClientLayerManager::DidComposite(TransactionId aTransactionId,
   if (aTransactionId.IsValid()) {
     nsIWidgetListener* listener = mWidget->GetWidgetListener();
     if (listener) {
-<<<<<<< HEAD
-      mNotifyingWidgetListener = true;
-      listener->DidCompositeWindow(aTransactionId, aCompositeStart, aCompositeEnd);
-      mNotifyingWidgetListener = false;
-||||||| merged common ancestors
-      listener->DidCompositeWindow(aTransactionId, aCompositeStart, aCompositeEnd);
-=======
       mNotifyingWidgetListener = true;
       listener->DidCompositeWindow(aTransactionId, aCompositeStart,
                                    aCompositeEnd);
       mNotifyingWidgetListener = false;
->>>>>>> upstream/upstream-releases
     }
-<<<<<<< HEAD
-    // DidCompositeWindow might have called Destroy on us and nulled out mWidget,
-    // see bug 1510058.
-    // Re-check it here.
-    if (mWidget) {
-      listener = mWidget->GetAttachedWidgetListener();
-      if (listener) {
-        listener->DidCompositeWindow(aTransactionId, aCompositeStart, aCompositeEnd);
-      }
-||||||| merged common ancestors
-    listener = mWidget->GetAttachedWidgetListener();
-    if (listener) {
-      listener->DidCompositeWindow(aTransactionId, aCompositeStart, aCompositeEnd);
-=======
     // DidCompositeWindow might have called Destroy on us and nulled out
     // mWidget, see bug 1510058. Re-check it here.
     if (mWidget) {
@@ -551,7 +479,6 @@ void ClientLayerManager::DidComposite(TransactionId aTransactionId,
         listener->DidCompositeWindow(aTransactionId, aCompositeStart,
                                      aCompositeEnd);
       }
->>>>>>> upstream/upstream-releases
     }
     if (mTransactionIdAllocator) {
       mTransactionIdAllocator->NotifyTransactionCompleted(aTransactionId);

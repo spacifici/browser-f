@@ -290,29 +290,6 @@ MediaResult FFmpegVideoDecoder<LIBAV_VER>::DoDecode(
     // against the map becoming extremely big.
     mDurationMap.Clear();
   }
-<<<<<<< HEAD
-
-  MediaResult rv = CreateImage(aSample->mOffset, pts, duration, aResults);
-  if (NS_SUCCEEDED(rv) && aGotFrame) {
-    *aGotFrame = true;
-  }
-  return rv;
-#endif
-}
-
-MediaResult FFmpegVideoDecoder<LIBAV_VER>::CreateImage(
-    int64_t aOffset, int64_t aPts, int64_t aDuration,
-    MediaDataDecoder::DecodedData& aResults) {
-  FFMPEG_LOG(
-    "Got one frame output with pts=%" PRId64 " dts=%" PRId64
-    " duration=%" PRId64 " opaque=%" PRId64,
-    aPts, mFrame->pkt_dts, aDuration, mCodecContext->reordered_opaque);
-||||||| merged common ancestors
-  FFMPEG_LOG(
-    "Got one frame output with pts=%" PRId64 " dts=%" PRId64
-    " duration=%" PRId64 " opaque=%" PRId64,
-    pts, mFrame->pkt_dts, duration, mCodecContext->reordered_opaque);
-=======
 
   MediaResult rv = CreateImage(aSample->mOffset, pts, duration, aResults);
   if (NS_SUCCEEDED(rv) && aGotFrame) {
@@ -328,7 +305,6 @@ MediaResult FFmpegVideoDecoder<LIBAV_VER>::CreateImage(
   FFMPEG_LOG("Got one frame output with pts=%" PRId64 " dts=%" PRId64
              " duration=%" PRId64 " opaque=%" PRId64,
              aPts, mFrame->pkt_dts, aDuration, mCodecContext->reordered_opaque);
->>>>>>> upstream/upstream-releases
 
   VideoData::YCbCrBuffer b;
   b.mPlanes[0].mData = mFrame->data[0];
@@ -409,39 +385,11 @@ MediaResult FFmpegVideoDecoder<LIBAV_VER>::CreateImage(
         break;
     }
   }
-<<<<<<< HEAD
-  RefPtr<VideoData> v =
-    VideoData::CreateAndCopyData(mInfo,
-                                  mImageContainer,
-                                  aOffset,
-                                  TimeUnit::FromMicroseconds(aPts),
-                                  TimeUnit::FromMicroseconds(aDuration),
-                                  b,
-                                  !!mFrame->key_frame,
-                                  TimeUnit::FromMicroseconds(-1),
-                                  mInfo.ScaledImageRect(mFrame->width,
-                                                        mFrame->height),
-                                  mImageAllocator);
-||||||| merged common ancestors
-  RefPtr<VideoData> v =
-    VideoData::CreateAndCopyData(mInfo,
-                                  mImageContainer,
-                                  aSample->mOffset,
-                                  TimeUnit::FromMicroseconds(pts),
-                                  TimeUnit::FromMicroseconds(duration),
-                                  b,
-                                  !!mFrame->key_frame,
-                                  TimeUnit::FromMicroseconds(-1),
-                                  mInfo.ScaledImageRect(mFrame->width,
-                                                        mFrame->height),
-                                  mImageAllocator);
-=======
   RefPtr<VideoData> v = VideoData::CreateAndCopyData(
       mInfo, mImageContainer, aOffset, TimeUnit::FromMicroseconds(aPts),
       TimeUnit::FromMicroseconds(aDuration), b, !!mFrame->key_frame,
       TimeUnit::FromMicroseconds(-1),
       mInfo.ScaledImageRect(mFrame->width, mFrame->height), mImageAllocator);
->>>>>>> upstream/upstream-releases
 
   if (!v) {
     return MediaResult(NS_ERROR_OUT_OF_MEMORY,

@@ -439,12 +439,8 @@ XPCOMUtils.defineLazyModuleGetters(this, {
   Sanitizer: "resource:///modules/Sanitizer.jsm",
 #if 0
   SaveToPocket: "chrome://pocket/content/SaveToPocket.jsm",
-<<<<<<< HEAD
 #endif
-||||||| merged common ancestors
-=======
   SearchTelemetry: "resource:///modules/SearchTelemetry.jsm",
->>>>>>> upstream/upstream-releases
   SessionStartup: "resource:///modules/sessionstore/SessionStartup.jsm",
   SessionStore: "resource:///modules/sessionstore/SessionStore.jsm",
   ShellService: "resource:///modules/ShellService.jsm",
@@ -1797,28 +1793,15 @@ BrowserGlue.prototype = {
 
     // There are several cases where we won't show a dialog here:
     // 1. There is only 1 tab open in 1 window
-<<<<<<< HEAD
-    // 2. The session will be restored at startup, indicated by
+    // 2. browser.warnOnQuit == false
     //    browser.startup.restoreTabs == true or
     //    browser.sessionstore.resume_session_once == true
-    // 3. browser.warnOnQuit == false
-    // 4. The browser is currently in Private Browsing mode
-    // 5. The browser will be restarted.
-||||||| merged common ancestors
-    // 2. The session will be restored at startup, indicated by
-    //    browser.startup.page == 3 or browser.sessionstore.resume_session_once == true
-    // 3. browser.warnOnQuit == false
-    // 4. The browser is currently in Private Browsing mode
-    // 5. The browser will be restarted.
-=======
-    // 2. browser.warnOnQuit == false
     // 3. The browser is currently in Private Browsing mode
     // 4. The browser will be restarted.
     // 5. The user has automatic session restore enabled and
     //    browser.sessionstore.warnOnQuit is not set to true.
     // 6. The user doesn't have automatic session restore enabled
     //    and browser.tabs.warnOnClose is not set to true.
->>>>>>> upstream/upstream-releases
     //
     // Otherwise, we will show the "closing multiple tabs" dialog.
     //
@@ -1853,20 +1836,9 @@ BrowserGlue.prototype = {
     if (!Services.prefs.getBoolPref("browser.warnOnQuit"))
       return;
 
-<<<<<<< HEAD
-    var sessionWillBeRestored =
-        Services.prefs.getBoolPref("browser.startup.restoreTabs") ||
-        Services.prefs.getBoolPref("browser.sessionstore.resume_session_once");
-    if (sessionWillBeRestored || !Services.prefs.getBoolPref("browser.warnOnQuit") ||
-        !Services.prefs.getBoolPref("browser.tabs.warnOnClose"))
-||||||| merged common ancestors
-    var sessionWillBeRestored = Services.prefs.getIntPref("browser.startup.page") == 3 ||
-                                Services.prefs.getBoolPref("browser.sessionstore.resume_session_once");
-    if (sessionWillBeRestored || !Services.prefs.getBoolPref("browser.warnOnQuit") ||
-        !Services.prefs.getBoolPref("browser.tabs.warnOnClose"))
-=======
     // If we're going to automatically restore the session, only warn if the user asked for that.
     let sessionWillBeRestored = Services.prefs.getIntPref("browser.startup.page") == 3 ||
+                                Services.prefs.getBoolPref("browser.startup.restoreTabs") ||
                                 Services.prefs.getBoolPref("browser.sessionstore.resume_session_once");
     // In the sessionWillBeRestored case, we only check the sessionstore-specific pref:
     if (sessionWillBeRestored) {
@@ -1875,35 +1847,14 @@ BrowserGlue.prototype = {
       }
     // Otherwise, we check browser.tabs.warnOnClose
     } else if (!Services.prefs.getBoolPref("browser.tabs.warnOnClose")) {
->>>>>>> upstream/upstream-releases
       return;
     }
 
     let win = BrowserWindowTracker.getTopWindow();
 
-<<<<<<< HEAD
-    // warnAboutClosingTabs checks browser.tabs.warnOnClose and returns if it's
-    // ok to close the window. It doesn't actually close the window.
-    if (windowcount == 1) {
-      aCancelQuit.data =
-        !win.gBrowser.warnAboutClosingTabs(pagecount, win.gBrowser.closingTabsEnum.ALL);
-    } else {
-//        Services.prefs.setBoolPref("browser.startup.restoreTabs", true);
-//        Services.prefs.setIntPref("browser.startup.page", 3);
-      // More than 1 window. Compose our own message.
-||||||| merged common ancestors
-    // warnAboutClosingTabs checks browser.tabs.warnOnClose and returns if it's
-    // ok to close the window. It doesn't actually close the window.
-    if (windowcount == 1) {
-      aCancelQuit.data =
-        !win.gBrowser.warnAboutClosingTabs(pagecount, win.gBrowser.closingTabsEnum.ALL);
-    } else {
-      // More than 1 window. Compose our own message.
-=======
     let warningMessage;
     // More than 1 window. Compose our own message.
     if (windowcount > 1) {
->>>>>>> upstream/upstream-releases
       let tabSubstring = gTabbrowserBundle.GetStringFromName("tabs.closeWarningMultipleWindowsTabSnippet");
       tabSubstring = PluralForm.get(pagecount, tabSubstring).replace(/#1/, pagecount);
 
