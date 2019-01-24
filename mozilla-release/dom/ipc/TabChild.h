@@ -202,16 +202,8 @@ class TabChild final : public TabChildBase,
                        public nsIObserver,
                        public TabContext,
                        public nsITooltipListener,
-<<<<<<< HEAD
-                       public mozilla::ipc::IShmemAllocator,
-                       public nsIPrivacyTransitionObserver
-{
-||||||| merged common ancestors
-                       public mozilla::ipc::IShmemAllocator
-{
-=======
+                       public nsIPrivacyTransitionObserver,
                        public mozilla::ipc::IShmemAllocator {
->>>>>>> upstream/upstream-releases
   typedef mozilla::dom::ClonedMessageData ClonedMessageData;
   typedef mozilla::dom::CoalescedMouseData CoalescedMouseData;
   typedef mozilla::dom::CoalescedWheelData CoalescedWheelData;

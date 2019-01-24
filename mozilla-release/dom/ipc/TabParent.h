@@ -276,18 +276,11 @@ class TabParent final : public PBrowserParent,
 
   virtual mozilla::ipc::IPCResult RecvDispatchFocusToTopLevelWindow() override;
 
-<<<<<<< HEAD
-  virtual mozilla::ipc::IPCResult RecvLoadContextPrivatenessChanged(const bool& isPrivate) override;
+  virtual mozilla::ipc::IPCResult RecvLoadContextPrivatenessChanged(
+      const bool& isPrivate) override;
 
-  virtual mozilla::ipc::IPCResult RecvRespondStartSwipeEvent(const uint64_t& aInputBlockId,
-                                                             const bool& aStartSwipe) override;
-||||||| merged common ancestors
-  virtual mozilla::ipc::IPCResult RecvRespondStartSwipeEvent(const uint64_t& aInputBlockId,
-                                                             const bool& aStartSwipe) override;
-=======
   virtual mozilla::ipc::IPCResult RecvRespondStartSwipeEvent(
       const uint64_t& aInputBlockId, const bool& aStartSwipe) override;
->>>>>>> upstream/upstream-releases
 
   virtual mozilla::ipc::IPCResult RecvDispatchWheelEvent(
       const mozilla::WidgetWheelEvent& aEvent) override;
@@ -626,17 +619,11 @@ class TabParent final : public PBrowserParent,
   LayoutDeviceIntPoint mClientOffset;
   LayoutDeviceIntPoint mChromeOffset;
 
-<<<<<<< HEAD
-private:
+ private:
   void CreateLoadContext();
 
-||||||| merged common ancestors
-private:
-=======
- private:
   void SuppressDisplayport(bool aEnabled);
 
->>>>>>> upstream/upstream-releases
   void DestroyInternal();
 
   void SetRenderLayersInternal(bool aEnabled, bool aForceRepaint);

@@ -58,14 +58,8 @@ static const char kPrefDnsLocalDomains[] = "network.dns.localDomains";
 static const char kPrefDnsForceResolve[] = "network.dns.forceResolve";
 static const char kPrefDnsOfflineLocalhost[] = "network.dns.offline-localhost";
 static const char kPrefDnsNotifyResolution[] = "network.dns.notifyResolution";
-<<<<<<< HEAD
-static const char kPrefNetworkProxyType[]    = "network.proxy.type";
 static const char kPrefSocksRemoteDns[]      = "network.proxy.socks_remote_dns";
-||||||| merged common ancestors
-static const char kPrefNetworkProxyType[]    = "network.proxy.type";
-=======
 static const char kPrefNetworkProxyType[] = "network.proxy.type";
->>>>>>> upstream/upstream-releases
 
 //-----------------------------------------------------------------------------
 

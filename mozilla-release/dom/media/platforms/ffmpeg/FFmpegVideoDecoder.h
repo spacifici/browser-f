@@ -65,13 +65,6 @@ class FFmpegVideoDecoder<LIBAV_VER>
 #endif
         mCodecID == AV_CODEC_ID_VP8;
 #endif
-<<<<<<< HEAD
-      mCodecID == AV_CODEC_ID_VP8;
-#endif
-||||||| merged common ancestors
-      mCodecID == AV_CODEC_ID_VP8;
-=======
->>>>>>> upstream/upstream-releases
   }
 
   MediaResult CreateImage(int64_t aOffset, int64_t aPts, int64_t aDuration,
