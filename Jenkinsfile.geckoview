@@ -1,0 +1,41 @@
+def dockerTag
+pipeline {
+	agent { 
+		dockerfile {
+			filename 'Dockerfile'
+			label '$dockerTag'
+			additionalBuildArgs '--build-arg USER=`whoami` --build-arg UID=`id -u` --build-arg GID=`id -g` .'
+		} 
+	}
+	stages{
+		stage('Checkout'){
+			steps{
+				checkout scm
+				script{
+					dockerTag = readFile('mozilla-release/browser/config/version.txt').trim()
+				}
+		        sh """#!/bin/bash -l
+		            rm -rf mozilla-release/objdir-frontend-android
+		        """
+			}
+		}
+		stage('Build'){
+			steps{
+				sh """#!/bin/bash -l
+		            set -x
+		            set -e
+		            echo '*** Build and Package the Browser ***'
+		            cd mozilla-release
+		            rm -rf objdir-frontend-android
+		            ./mach clobber
+		            ./mach build
+		        """
+			}
+		}
+	}
+	post{
+		always{
+			echo 'Its been a long time'
+		}
+	}
+}
