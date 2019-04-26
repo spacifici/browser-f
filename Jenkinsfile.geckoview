@@ -3,8 +3,7 @@ pipeline {
 	agent { 
 		dockerfile {
 			filename 'Dockerfile'
-			label '$dockerTag'
-			additionalBuildArgs '--build-arg USER=`whoami` --build-arg UID=`id -u` --build-arg GID=`id -g` .'
+			additionalBuildArgs '--build-arg USER=`whoami` --build-arg UID=`id -u` --build-arg GID=`id -g`'
 		} 
 	}
 	stages{
@@ -26,6 +25,7 @@ pipeline {
 		            set -e
 		            echo '*** Build and Package the Browser ***'
 		            cd mozilla-release
+		            mv mozconfig.test mozconfig
 		            rm -rf objdir-frontend-android
 		            ./mach clobber
 		            ./mach build
