@@ -1,0 +1,19 @@
+# Build Firefox for Android:
+# Add MOZILLA_OFFICIAL flag to proguard the artifacts
+export MOZILLA_OFFICIAL=1
+# Enable telemetry
+export CLIQZ_TELEMETRY_REPORTING=1 
+export MOZ_INSTALL_TRACKING=
+# Android Targets: 'i686-linux-android' or 'arm-linux-androideabi'
+ac_add_options --enable-application=mobile/android
+ac_add_options --target=i686-linux-android
+ac_add_options --enable-optimize
+ac_add_options --disable-debug
+
+# With the following Android SDK and NDK:
+ac_add_options --with-android-sdk=$ANDROID_HOME
+ac_add_options --with-android-ndk=$ANDROID_NDK
+
+# Available Brands: 'cliqz', 'cliqz-alpha', 'ghostery' & 'ghostery-alpha'
+# Write build artifacts to:
+mk_add_options MOZ_OBJDIR=./objdir-frontend-android/
